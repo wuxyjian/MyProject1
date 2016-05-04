@@ -9,7 +9,7 @@ namespace MVC5_EF6.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Accoun
+        // GET: Accoun测试
         public ActionResult Index()
         {
             return View();
