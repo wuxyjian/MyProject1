@@ -12,7 +12,31 @@ namespace MVC5_EF6.Controllers
         // GET: Accoun
         public ActionResult Index()
         {
-            return View();
+            myTestEntities db = new myTestEntities();
+            //var sysUser = db.SysUser.FirstOrDefault(u => u.Username == "wujian");
+            return View(db.SysUser);
+
+        }
+
+        public ActionResult Edit()
+        {
+            myTestEntities db = new myTestEntities();
+            //var sysUser = db.SysUser.FirstOrDefault(u => u.Username == "wujian");
+            return View(new SysUser());
+
+        }
+        public ActionResult Create()
+        {
+            myTestEntities db = new myTestEntities();
+            //var sysUser = db.SysUser.FirstOrDefault(u => u.Username == "wujian");
+            return View(new SysUser());
+
+        }
+        public ActionResult Delete()
+        {
+            myTestEntities db = new myTestEntities();
+            //var sysUser = db.SysUser.FirstOrDefault(u => u.Username == "wujian");
+            return View(new SysUser());
 
         }
 
@@ -39,6 +63,24 @@ namespace MVC5_EF6.Controllers
 
             
         }
+        
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="sysUser"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Create(SysUser sysUser)
+        {
+            myTestEntities db = new myTestEntities();
+            db.SysUser.Add(sysUser);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
         //EF更新
         public ActionResult EFUpdateDemo()
         {
@@ -152,6 +194,14 @@ namespace MVC5_EF6.Controllers
         public ActionResult Register() 
         {
             return View();
+        }
+
+        //详情
+        public ActionResult Details(int id)
+        {
+            myTestEntities db = new myTestEntities();
+            SysUser sysUser = db.SysUser.Find(id);
+            return View(sysUser);
         }
     }
 }

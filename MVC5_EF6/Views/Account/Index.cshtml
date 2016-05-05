@@ -2,6 +2,7 @@
 @{
     Layout = null;
 }
+@model IEnumerable<MVC5_EF6.Models.SysUser>
 
 <!DOCTYPE html>
 
@@ -12,7 +13,20 @@
 </head>
 <body>
     <div> 
-        Hello world
+        <table>
+            <tr>
+                <th>@Html.DisplayNameFor(model=>model.Username)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.ActionLink("Details", "Details", new { id =item.ID })</td>
+                </tr> 
+            }
+        </table>
     </div>
 </body>
 </html>
